@@ -1,13 +1,10 @@
 Login page:
- -username
  -email
  -password
  -captcha
  -remember me
 
 Signup page:
- -username
- -display name
  -full name
  -email
  -password
@@ -15,6 +12,8 @@ Signup page:
  -redirect to more about yourself
 
 More about yourself:
+ -username
+ -display name
  -university
  -age
  -location
