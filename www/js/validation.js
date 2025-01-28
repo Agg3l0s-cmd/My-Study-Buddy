@@ -1,4 +1,4 @@
-const form = document.getElementById('signupForm');
+const form = document.getElementById('form');
 const fname = document.getElementById('name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -14,7 +14,7 @@ form.addEventListener('submit', (e) => {
     }
     else{
         console.log('login form');
-        errors = getLoginFormErrors(email.value, password.value)
+        errors = getLoginFormErrors(email, password)
     }
 
     if (errors.length > 0) {
@@ -78,12 +78,30 @@ function getSignupFormErrors(fname, email, password, repassword){
     return errors;
 }
 
+function getLoginFormErrors(email, password){
+    let errors = [];
+
+    if (email.value === ''|| email.value === null){
+        errors.push('Email');
+        email.parentElement.classList.add('incorrect');
+    }
+
+    if (password.value === ''|| password.value === null){
+        errors.push('Password');
+        password.parentElement.classList.add('incorrect');
+    }
+
+    return errors;
+}
+
 const allInputs = [fname, email, password, repassword];
 allInputs.forEach(input => {
-    input.addEventListener('input', () => {
-        if(input.parentElement.classList.contains('incorrect')){
-            input.parentElement.classList.remove('incorrect');
-            error_message.textContent = '';
-        }
-    });
+    if (input !== null){
+        input.addEventListener('input', () => {
+            if(input.parentElement.classList.contains('incorrect')){
+                input.parentElement.classList.remove('incorrect');
+                error_message.textContent = '';
+            }
+        });
+    } 
 });
